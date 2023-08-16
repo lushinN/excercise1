@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib import admin
 from  django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.utils.html import format_html
+
 
 User = get_user_model()
 
@@ -26,7 +28,7 @@ class Advertisement(models.Model):
     def created_date(self):
         if self.created_at.date == timezone.now().date():
             created_time = self.created_at.time().strftime('%H:%M:%S')
-            return  ('<span style = "color: purple; font-weight: bold"> Сегодня в {}</span>', created_time
+            return  format_html('<span style = "color: purple; font-weight: bold"> Сегодня в {}</span>', created_time
                      )
         else:
             return self.created_at.strftime('%d.%m.%y' ' в %H:%M:%S')
@@ -35,7 +37,7 @@ class Advertisement(models.Model):
     def updated_date(self):
         if self.updated_at.date == timezone.now().date():
             updated_time = self.updated_at.time().strftime('%H:%M:%S')
-            return ('<span style = "color: orange; font-weight: bold"> Сегодня в {}</span>', updated_time
+            return format_html('<span style = "color: orange; font-weight: bold"> Сегодня в {}</span>', updated_time
                      )
         else:
             return self.updated_at.strftime('%d.%m.%y' ' в %H:%M:%S')
