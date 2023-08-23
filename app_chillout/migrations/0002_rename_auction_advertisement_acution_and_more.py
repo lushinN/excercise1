@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='advertisement',
             old_name='descrtiption',
-            new_name='descriptiom',
+            new_name='description',
         ),
         migrations.AddField(
             model_name='advertisement',
